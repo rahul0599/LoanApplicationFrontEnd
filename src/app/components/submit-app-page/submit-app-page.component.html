@@ -1,0 +1,251 @@
+<div class="bg-info text-white">
+    <img class="ml-2 mt-2 pb-2" style="float:left" width="80px" height="80px" src="../../../assets/logo.jpg">
+    <h2 class="pt-4 pb-4 mb-4 pr-2" align="right">Submit New Application</h2>
+</div>
+
+
+
+<div class="m-1 p-2">
+<form [formGroup]="personForm" (ngSubmit)="onSubmit('/success')">
+    <div class="form-group row">
+            <!-- <input type="text" value="Rahul" readonly> -->
+            <label for="name" class="col-sm-2 col-form-label">Name : </label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="name" placeholder="First Name" formControlName="firstName"/>
+                <small class="form-text text-danger" *ngIf="personForm.controls['firstName'].hasError('required')">First Name cannot be empty</small>
+                <small class="form-text text-danger" *ngIf="personForm.controls['firstName'].hasError('maxlength')">Please use less than 255 letters</small>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="name" placeholder="Middle Name" formControlName="middleName"/>
+                <small class="form-text text-danger" *ngIf="personForm.controls['middleName'].hasError('maxlength')">Please use less than 255 letters</small>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="name" placeholder="Last Name" formControlName="lastName"/>
+                <small class="form-text text-danger" *ngIf="personForm.controls['lastName'].hasError('required')">Last Name cannot be empty</small>
+                <small class="form-text text-danger" *ngIf="personForm.controls['lastName'].hasError('maxlength')">Please use less than 255 letters</small>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label for="dob" class="col-sm-2 col-form-label">Date of Birth : </label>
+        <div class="col-sm-2">
+            <input type="date" class="form-control" id="dob" formControlName="dob"/>
+            <small class="form-text text-danger" *ngIf="personForm.controls['dob'].hasError('required')">Please enter Date of Birth</small>
+        </div>
+    </div> 
+    <div class="form-group row">
+        <label for="ms" class="col-sm-2 col-form-label">Marital Status : </label>
+        <div class="col-sm-2">
+            <select class="form-control" id="ms" formControlName="maritalStatus">
+                <option value="married">Married</option>
+                <option value="single">Single</option>
+                <option value="separated">Separated</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+            </select>
+            <small class="form-text text-danger" *ngIf="personForm.controls['maritalStatus'].hasError('required')">Please select one response</small>
+        </div> 
+    </div>
+    <div class="form-group row">
+        <label for="ssn" class="col-sm-2 col-form-label">SSN Number : </label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="ssn" formControlName="ssn"/>
+            <small class="form-text text-danger" *ngIf="personForm.controls['ssn'].hasError('required')">Please provide SSN number</small>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="la" class="col-sm-2 col-form-label">Loan Amount : </label>
+        <div class="col-sm-2">
+            <input type="number" class="form-control" id="la" formControlName="loanAmount" placeholder="In Dollars"/>
+            <small class="form-text text-danger" *ngIf="personForm.controls['loanAmount'].hasError('required')">Please enter Loan Amount</small>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="pur" class="col-sm-2 col-form-label">Loan Purpose :</label>
+        <div class="col-sm-2">
+            <select class="form-control" id="pur" formControlName="loanPurpose">
+                <option value="debt_consolidation">Debt</option>
+                <option value="educational">Educational</option>   
+                <option value="medical">Medical</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="home_improvement">House Improvement</option>
+                <option value="house">Home</option>
+                <option value="wedding">Wedding</option>
+                <option value="car">Car</option>
+                <option value="vacation">Vacation</option>
+                <option value="major_purchase">Major Purchase</option>
+                <option value="small_business">Small Business</option>
+                <option value="renewable_energy">Renewable Energy</option>
+                <option value="moving">Moving</option>
+                <option value="other">Other</option>
+            </select>
+            <small class="form-text text-danger" *ngIf="personForm.controls['loanPurpose'].hasError('required')">Please select one response</small> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="des" class="col-sm-2 col-form-label">Description : </label>
+        <div class="col-sm-8">
+            <textarea class="form-control" id="des" rows="3" formControlName="description"></textarea>
+        </div>
+    </div>
+    <div class="form-group" style="border:1px solid black" formGroupName="address">
+        <div class="m-1">
+            <label>Address</label>
+            <div class="form-group row">
+                <label for="al1" class="col-sm-2 col-form-label">Address Line 1 : </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="al1" formControlName="addressLine1"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('address.addressLine1').hasError('required')">This field cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('address.addressLine1').hasError('maxlength')">Please use less than 255 characters</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="al2" class="col-sm-2 col-form-label">Address Line 2 : </label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" id="al2" formControlName="addressLine2"/>
+                <small class="form-text text-danger" *ngIf="personForm.get('address.addressLine2').hasError('maxlength')">Please use less than 255 characters</small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-auto">
+                City : <input type="text" class="form-control" formControlName="city">
+                <small class="form-text text-danger" *ngIf="personForm.get('address.city').hasError('required')">This field cannot be empty</small>
+                <small class="form-text text-danger" *ngIf="personForm.get('address.city').hasError('maxlength')">Please use less than 255 characters</small>
+
+                </div>
+                <div class="col-auto">
+                State : <input type="text" class="form-control" formControlName="state">
+                <small class="form-text text-danger" *ngIf="personForm.get('address.state').hasError('required')">This field cannot be empty</small>
+                <small class="form-text text-danger" *ngIf="personForm.get('address.state').hasError('maxlength')">Please use less than 255 characters</small>
+                </div>
+                <div class="col-auto">
+                Postal Code : <input type="number" class="form-control" onKeyPress="if(this.value.length==5) return false;" formControlName="postalCode">
+                <small class="form-text text-danger" *ngIf="personForm.get('address.postalCode').hasError('required')">This field cannot be empty</small>
+                <small class="form-text text-danger" *ngIf="personForm.get('address.postalCode').hasError('max')">Postal Code cannot exceed 5 digits</small>
+                <small class="form-text text-danger" *ngIf="personForm.get('address.postalCode').hasError('min')">Postal Code must have 5 digits</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="border:1px solid black" formGroupName="contactInfo">
+        <div class="m-1">
+            <label>Contact Information</label>
+            <div class="form-row">
+                <div class="col-auto">
+                    Home Phone : <input type="number" class="form-control" onKeyPress="if(this.value.length==10) return false;" formControlName="homePhone">
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.homePhone').hasError('required')">This field cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.homePhone').hasError('min')">Phone number must have 10 digits</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.homePhone').hasError('max')">Phone number must have 10 digits</small>
+                </div>
+                <div class="col-auto">
+                    Office Phone : <input type="number" class="form-control" onKeyPress="if(this.value.length==10) return false;" formControlName="officePhone">
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.officePhone').hasError('min')">Phone number must have 10 digits</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.officePhone').hasError('max')">Phone number must have 10 digits</small>
+                </div>
+                <div class="col-auto">
+                    Mobile : <input type="number" class="form-control" onKeyPress="if(this.value.length==10) return false;" formControlName="mobileNumber">
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.mobileNumber').hasError('required')">This field cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.mobileNumber').hasError('min')">Phone number must have 10 digits</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.mobileNumber').hasError('max')">Phone number must have 10 digits</small>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <label for="ema" class="col-sm-2 col-form-label">Email Address : </label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" id="ema" formControlName="email"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.email').hasError('required')">This field cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('contactInfo.email').hasError('email')">Not a valid email ID</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="border:1px solid black" formGroupName="empDetails">
+        <div class="m-1">
+            <label>Employment Details</label>
+            <div class="form-group row">
+                <label for="empn" class="col-sm-2 col-form-label">Employer Name : </label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="empn" formControlName="employerName"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.employerName').hasError('required')">Employer Name cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.employerName').hasError('maxlength')">Please use less than 255 letters</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="sal" class="col-sm-2 col-form-label">Annual Salary : </label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="sal" formControlName="salary" placeholder="In Dollars"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.salary').hasError('required')">This field cannot be empty</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="wor" class="col-sm-2 col-form-label">Work Experience : </label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="wor" formControlName="workExpYear" placeholder="Years"/>
+                </div>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="wor" formControlName="workExpMonth" placeholder="Months"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.workExpMonth').hasError('required')">This field cannot be empty</small>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.workExpMonth').hasError('max')">Invalid number of months.</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="desig" class="col-sm-2 col-form-label">Designation : </label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="desig" formControlName="designation"/>
+                    <small class="form-text text-danger" *ngIf="personForm.get('empDetails.designation').hasError('maxlength')">Please use less than 255 characters</small>
+                </div>
+            </div>
+            <div class="pl-2 pr-2">
+                <div class="form-group" style="border:1px solid black" formGroupName="empAddress">
+                    <div class="m-1">
+                        <label> Employment Address Details</label>
+                        <div class="form-group row">
+                            <label for="eal1" class="col-sm-2 col-form-label">Address Line 1 : </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="eal1" formControlName="empAddressLine1"/>
+                                <small class="form-text text-danger" *ngIf="personForm.get(['empDetails','empAddress','empAddressLine1']).hasError('required')">This field cannot be empty</small>
+                                <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empAddressLine1').hasError('maxlength')">Please use less than 255 characters</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="eal2" class="col-sm-2 col-form-label">Address Line 2 : </label>
+                            <div class="col-sm-8">
+                            <input type="text" class="form-control" id="eal2" formControlName="empAddressLine2"/>
+                            <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empAddressLine2').hasError('maxlength')">Please use less than 255 characters</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-auto">
+                                City : <input type="text" class="form-control" formControlName="empCity">
+                                <small class="form-text text-danger" *ngIf="personForm.get(['empDetails','empAddress','empCity']).hasError('required')">This field cannot be empty</small>
+                                <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empCity').hasError('maxlength')">Please use less than 255 characters</small>
+                            </div>
+                            <div class="col-auto">
+                                State : <input type="text" class="form-control" formControlName="empState">
+                                <small class="form-text text-danger" *ngIf="personForm.get(['empDetails','empAddress','empState']).hasError('required')">This field cannot be empty</small>
+                                <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empState').hasError('maxlength')">Please use less than 255 characters</small>
+                            </div>
+                            <div class="col-auto">
+                                Postal Code : <input type="number" class="form-control" onKeyPress="if(this.value.length==5) return false;" formControlName="empPostalCode">
+                                <small class="form-text text-danger" *ngIf="personForm.get(['empDetails','empAddress','empPostalCode']).hasError('required')">This field cannot be empty</small>
+                                <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empPostalCode').hasError('max')">Postal Code cannot exceed 5 digits</small>
+                                <small class="form-text text-danger" *ngIf="personForm.get('empDetails.empAddress.empPostalCode').hasError('min')">Postal Code must have 5 digits</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div align="center">
+        <button type="submit" class="btn btn-success mr-3" [disabled]="personForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="cancel('/home')">Cancel</button>
+    </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<router-outlet></router-outlet>

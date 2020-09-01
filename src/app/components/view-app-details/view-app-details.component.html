@@ -1,0 +1,222 @@
+<div class="bg-info text-white">
+    <img class="ml-2 mt-2 pb-2" style="float:left" width="80px" height="80px" src="../../../assets/logo.jpg">
+    <h2 class="pt-4 pb-4 mb-4 mr-2" align="right">View Application Details</h2>
+</div>
+
+<table class="table table-sm table-borderless mb-4">
+    <tbody>
+        <tr>
+            <td align="center">Application ID : </td>
+            <td align="left">{{app?.applicationId}} </td>
+        </tr>
+        <tr>
+            <td align="center">Application Status : </td>
+            <td align="left">{{app?.status}} </td>
+        </tr>
+        <tr>
+            <td align="center">Score : </td>
+            <td align="left">{{app?.score}} </td>
+        </tr>
+        <tr>
+            <td align="center">Decline Reason : </td>
+            <td align="left">{{app?.declinedReason}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<div class="ml-2 mr-2 p-2" style="border:1px solid black">
+    <h5 class="mb-4">Original Application</h5>
+    <form>
+        <div class="form-group row">
+                
+                <label for="name" class="col-sm-2 col-form-label">Name : </label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="name" value="{{app?.user.firstName}}" readonly/>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="name" value="{{app?.user.middleName}}" readonly/>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="name" value="{{app?.user.lastName}}" readonly/>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label for="dob" class="col-sm-2 col-form-label">Date of Birth : </label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="dob" value="{{app?.user.dob | date: 'dd/MM/yyyy'}}" readonly/>
+            </div>
+        </div> 
+        <div class="form-group row">
+            <label for="ms" class="col-sm-2 col-form-label">Marital Status : </label>
+            <div class="col-sm-2">
+                
+                <input type="text" class="form-control" id="ms" value="{{app?.user.maritalStatus}}" readonly/>  
+                
+            </div> 
+        </div>
+        <div class="form-group row">
+            <label for="ssn" class="col-sm-2 col-form-label">SSN Number : </label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="ssn" value="{{app?.user.ssn}}" readonly/>
+                
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="la" class="col-sm-2 col-form-label">Loan Amount : </label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control" id="la" value="{{app?.loanAmount}}" readonly/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="pur" class="col-sm-2 col-form-label">Loan Purpose :</label>
+            <div class="col-sm-2">
+                <input type="text" id="pur" class="form-control" value="{{app?.loanPurpose}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="des" class="col-sm-2 col-form-label">Description : </label>
+            <div class="col-sm-8">
+                <textarea class="form-control" id="des" rows="3" value="{{app?.description}}" readonly></textarea>
+            </div>
+        </div>
+        <div class="form-group" style="border:1px solid black" >
+            <div class="m-1">
+                <label>Address</label>
+                <div class="form-group row">
+                    <label for="al1" class="col-sm-2 col-form-label">Address Line 1 : </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="al1" value="{{app?.addressLine1}}" readonly/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="al2" class="col-sm-2 col-form-label">Address Line 2 : </label>
+                    <div class="col-sm-8">
+                    <input type="text" class="form-control" id="al2" value="{{app?.addressLine2}}" readonly/>
+                   
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-auto">
+                    City : <input type="text" class="form-control" value="{{app?.city}}" readonly>
+                   </div>
+                    <div class="col-auto">
+                    State : <input type="text" class="form-control" value="{{app?.state}}" readonly>
+                    
+                    </div>
+                    <div class="col-auto">
+                    Postal Code : <input type="number" class="form-control" value="{{app?.postalCode}}" readonly>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="border:1px solid black">
+            <div class="m-1">
+                <label>Contact Information</label>
+                <div class="form-row">
+                    <div class="col-auto">
+                        Home Phone : <input type="number" class="form-control" value="{{app?.homePhone}}" readonly>
+                       
+                    </div>
+                    <div class="col-auto">
+                        Office Phone : <input type="number" class="form-control" value="{{app?.officePhone}}" readonly>
+                       
+                    </div>
+                    <div class="col-auto">
+                        Mobile : <input type="number" class="form-control" value="{{app?.mobileNumber}}" readonly>
+                        
+                        
+                    </div>
+                </div>
+                <div class="form-group row pt-3">
+                    <label for="ema" class="col-sm-2 col-form-label">Email Address : </label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="ema" value="{{app?.email}}" readonly/>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="border:1px solid black">
+            <div class="m-1">
+                <label>Employment Details</label>
+                <div class="form-group row">
+                    <label for="empn" class="col-sm-2 col-form-label">Employer Name : </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="empn" value="{{app?.employerName}}" readonly/>
+                       
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="sal" class="col-sm-2 col-form-label">Annual Salary : </label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" id="sal" value="{{app?.salary}}" readonly/>
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="wor" class="col-sm-2 col-form-label">Work Experience : </label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" id="wor" value="{{app?.workExpYear}}" readonly/>
+                        Years
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" id="wor" value="{{app?.workExpMonth}}" readonly/>
+                        Months
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="desig" class="col-sm-2 col-form-label">Designation : </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="desig" value="{{app?.designation}}" readonly/>
+                        
+                    </div>
+                </div>
+                <div class="pl-2 pr-2">
+                    <div class="form-group" style="border:1px solid black">
+                        <div class="m-1">
+                            <label> Employment Address Details</label>
+                            <div class="form-group row">
+                                <label for="eal1" class="col-sm-2 col-form-label">Address Line 1 : </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="eal1" value="{{app?.empAddressLine1}}" readonly/>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="eal2" class="col-sm-2 col-form-label">Address Line 2 : </label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="eal2" value="{{app?.empAddressLine2}}" readonly/>
+                                
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-auto">
+                                    City : <input type="text" class="form-control" value="{{app?.empCity}}" readonly>
+                                    
+                                </div>
+                                <div class="col-auto">
+                                    State : <input type="text" class="form-control" value="{{app?.empState}}" readonly>
+                                    
+                                </div>
+                                <div class="col-auto">
+                                    Postal Code : <input type="number" class="form-control" value="{{app?.emppostalCode}}" readonly>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        </form>
+</div>
+<div class="mt-3 mb-3" align="right">
+    <button type="button" class="btn btn-warning mr-3" (click)="back('/view')"> View Applications </button>
+    <button type="button" class="btn btn-info mr-5" (click)="home('/home')"> Home </button>
+</div>
