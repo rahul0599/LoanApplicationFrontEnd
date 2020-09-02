@@ -25,6 +25,7 @@ export class ViewAppDetailsComponent implements OnInit {
       });
     this._service.getById(this.id).subscribe(res=>{
     this.app = res;
+    this.app.loanPurpose = this.app.loanPurpose.replace(/_/g, " ");
     })
   }
 
